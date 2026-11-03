@@ -1,0 +1,180 @@
+# Declarative XcodeGen project; regenerate ServerDock.xcodeproj after editing.
+# All business code belongs directly to the single-module ServerDock app target.
+# Third-party packages include remote SwiftTerm and three local CodeEdit packages.
+name: ServerDock
+
+options:
+  bundleIdPrefix: com.kavaz
+  deploymentTarget:
+    macOS: "14.0"
+  createIntermediateGroups: true        # Map App/Core/Features/UI/System directories into groups.
+  defaultConfig: Debug
+  groupSortPosition: top
+  developmentLanguage: en              # English source literals are String Catalog keys/default text; locales: en, ko, ja, es, pt-BR.
+
+# Debug/Release use unsandboxed Developer ID distribution with full local terminals.
+# ReleaseMAS uses App Sandbox/SERVERDOCK_MAS, hides local terminals, and restricts keys to the library.
+# MAS build: xcodebuild -scheme ServerDock-MAS -configuration ReleaseMAS; separate target excludes Sparkle.
+# Apple Distribution signing/provisioning is planned for release milestone J4.
+configs:
+  Debug: debug
+  Release: release
+  DebugMAS: debug         # Local sandbox testing: Debug optimization, App Sandbox, SERVERDOCK_MAS, breakpoints/logging.
+  ReleaseMAS: release      # Release optimization with App Sandbox/SERVERDOCK_MAS.
+
+settings:
+  base:
+    # Version source is exclusively ServerDock/Info.plist CFBundleShortVersionString/CFBundleVersion.
+    # AppInfo reads the runtime bundle and packaging reads built Info.plist;
+    # do not duplicate MARKETING_VERSION here. Bump versions only in Info.plist.
+    SWIFT_VERSION: "5.9"
+    SWIFT_EMIT_LOC_STRINGS: YES          # Extract localizable literals into the String Catalog during compilation.
+    DEAD_CODE_STRIPPING: YES
+    ARCHS: arm64                  # Apple Silicon only, excluding Intel, roughly halves universal-binary size.
+    # Debug signing injects get-task-allow into the otherwise empty Developer ID entitlements.
+    # Recent Xcode treats this as a build-time modification; explicitly allow injection.
+    CODE_SIGN_ALLOW_ENTITLEMENTS_MODIFICATION: YES
+    # Automatic development signing manages Apple Development certificates/profiles.
+    # Override with Developer ID Application or Apple Distribution for the selected release channel.
+    # package-app.sh still overrides archive signing to ad-hoc; update that path when integrating notarization.
+    CODE_SIGN_STYLE: Automatic
+    DEVELOPMENT_TEAM: D5KUMJQ7T8
+
+packages:
+  SwiftTerm:
+    url: https://github.com/migueldeicaza/SwiftTerm
+    from: "1.13.0"
+  RoyalVNCKit:
+    url: https://github.com/royalapplications/royalvnc.git
+    revision: 090b96eddeee183e9fec293c5cd881d302a4349d
+  # Optimize local CryptoSwift even in Debug; ARD 4096-bit BigInt authentication otherwise exceeds 30s.
+  CryptoSwift:
+    path: LocalPackages/CryptoSwift
+  CodeEditSourceEditor:
+    path: LocalPackages/CodeEditSourceEditor
+  # Declare CodeEditTextView because the app imports it directly. CodeEditSymbols arrives transitively through
+  # CodeEditSourceEditor's relative path; do not redeclare and cause identity conflicts.
+  CodeEditTextView:
+    path: LocalPackages/CodeEditTextView
+
+# Two app targets share sources through ServerDockApp below.
+# ServerDock: Developer ID web/GitHub, Sparkle updates, no sandbox, full local terminals.
+# ServerDock-MAS: App Store, no Sparkle linkage/embedding, sandbox/SERVERDOCK_MAS, no local terminals.
+targetTemplates:
+  ServerDockApp:
+    type: application
+    platform: macOS
+    sources:
+      - path: ServerDock
+        excludes:
+          - "Info.plist"          # Used as INFOPLIST_FILE, not copied as a resource.
+          - "**/.DS_Store"
+    dependencies:
+      - package: SwiftTerm
+        product: SwiftTerm
+      - package: CodeEditSourceEditor
+        product: CodeEditSourceEditor
+      - package: CodeEditTextView      # Direct app import; CodeEditSymbols is transitive and needs no explicit declaration.
+        product: CodeEditTextView
+      - package: RoyalVNCKit
+        product: RoyalVNCKit
+        embed: true       # Embed dynamic RoyalVNCKit in Contents/Frameworks or installed apps cannot launch.
+      # Link static FreeRDP xcframework plus system dependencies without embedding.
+      - framework: Vendor/CFreeRDP.xcframework
+        embed: false
+      # Static libssh2 in-process engine enables MAS sandboxing.
+      # Include libssh2.a only; CFreeRDP's shared static OpenSSL resolves its undefined symbols at final link.
+      - framework: Vendor/CSSH2.xcframework
+        embed: false
+      - sdk: Security.framework
+      - sdk: CoreFoundation.framework
+    settings:
+      base:
+        INFOPLIST_FILE: ServerDock/Info.plist
+        # Expose the RDP ObjC bridge through the bridging header; search versioned FreeRDP/WinPR include directories.
+        SWIFT_OBJC_BRIDGING_HEADER: ServerDock/Features/RDP/Bridge/ServerDock-Bridging-Header.h
+        HEADER_SEARCH_PATHS:
+          - $(SRCROOT)/Vendor/CFreeRDP.xcframework/macos-arm64/Headers          # openssl headers for legacy-provider registration.
+          - $(SRCROOT)/Vendor/CFreeRDP.xcframework/macos-arm64/Headers/freerdp3
+          - $(SRCROOT)/Vendor/CFreeRDP.xcframework/macos-arm64/Headers/winpr3
+          - $(SRCROOT)/Vendor/CSSH2.xcframework/macos-arm64/Headers              # libssh2.h / libssh2_sftp.h
+          - $(SRCROOT)/ServerDock/Features/SSH/Engine                                # ServerDockSSHCore.h, referenced by filename from the bridging header.
+        OTHER_LDFLAGS:
+          - -lz          # FreeRDP/WinPR/OpenSSL depend on system dynamic zlib.
+          - -lresolv     # WinPR DNS/name-resolution dependency.
+        GENERATE_INFOPLIST_FILE: NO
+        PRODUCT_NAME: ServerDock
+        PRODUCT_BUNDLE_IDENTIFIER: com.kavaz.serverdock
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        CODE_SIGN_ENTITLEMENTS: ServerDock.entitlements
+        ENABLE_HARDENED_RUNTIME: NO       # Enable at release/notarization time.
+        MACOSX_DEPLOYMENT_TARGET: "14.0"
+        COMBINE_HIDPI_IMAGES: YES
+      configs:
+        Release:
+          SWIFT_OPTIMIZATION_LEVEL: "-Osize"          # Prefer size; negligible performance cost for this I/O/terminal app.
+          ASSETCATALOG_COMPILER_OPTIMIZATION: space   # Optimize asset catalogs for size.
+          # Strip during archive installation, separating main-binary symbols into dSYM.
+          # See scripts/package-app.sh; retain Release dwarf-with-dsym for crash symbolication.
+        ReleaseMAS:
+          SWIFT_OPTIMIZATION_LEVEL: "-Osize"
+          ASSETCATALOG_COMPILER_OPTIMIZATION: space
+
+targets:
+  # Developer ID includes Sparkle; calls are guarded by #if !SERVERDOCK_MAS.
+  ServerDock:
+    templates: [ServerDockApp]
+    settings:
+      configs:
+        Debug:
+          # Local Run must not depend on a maintainer's development certificate.
+          CODE_SIGN_STYLE: Manual
+          CODE_SIGN_IDENTITY: "-"
+          DEVELOPMENT_TEAM: ""
+    dependencies:
+      - framework: Vendor/Sparkle.framework
+        embed: true
+
+  # App Store excludes Sparkle linkage/embedding and uses ServerDock-MAS.entitlements.
+  ServerDock-MAS:
+    templates: [ServerDockApp]
+    settings:
+      base:
+        CODE_SIGN_ENTITLEMENTS: ServerDock-MAS.entitlements
+        # Avoid target product collisions; Info.plist retains the visible ServerDock name.
+        PRODUCT_NAME: ServerDock-MAS
+        PRODUCT_MODULE_NAME: ServerDock          # Keep the same module name as direct distribution.
+      configs:
+        DebugMAS:
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: DEBUG SERVERDOCK_MAS
+        ReleaseMAS:
+          SWIFT_ACTIVE_COMPILATION_CONDITIONS: SERVERDOCK_MAS      # Channel flag hides local terminals and restricts private keys to the library.
+    # Shared Info.plist remains the version source; remove Sparkle keys from MAS products before signing only.
+    postBuildScripts:
+      - name: "Strip Sparkle keys from Info.plist (MAS)"
+        basedOnDependencyAnalysis: false
+        script: |
+          PLIST="${TARGET_BUILD_DIR}/${INFOPLIST_PATH}"
+          for KEY in SUFeedURL SUPublicEDKey SUEnableAutomaticChecks SUScheduledCheckInterval; do
+            /usr/libexec/PlistBuddy -c "Delete :${KEY}" "$PLIST" 2>/dev/null || true
+          done
+
+# Shared ServerDock scheme supports packaging and Xcode run/archive.
+schemes:
+  ServerDock:
+    build:
+      targets:
+        ServerDock: all
+    run:
+      config: Debug
+    archive:
+      config: Release
+  # MAS scheme supports local sandbox testing/release archives; Apple Development signing enables sandbox execution.
+  ServerDock-MAS:
+    build:
+      targets:
+        ServerDock-MAS: all
+    run:
+      config: DebugMAS
+    archive:
+      config: ReleaseMAS

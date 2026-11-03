@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
+  <channel>
+    <title>ServerDock Updates</title>
+    <link>https://github.com/jh78bb/server-dock</link>
+    <description>Updates for ServerDock, published from jh78bb/server-dock.</description>
+    <language>en</language>
+    <!-- Initial feed: no downloadable updates have been published yet.
+         The release workflow generates signed items and publishes them to gh-pages. -->
+  </channel>
+</rss>

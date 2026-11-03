@@ -1,0 +1,44 @@
+name: CI
+
+# Credential-free compile check for pull requests and pushes to main.
+# Needs no secrets, so it is safe to run for pull requests from forks.
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: macos-15   # Apple Silicon (arm64), matching the project architecture.
+    timeout-minutes: 60
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: |
+          set -euo pipefail
+          XC=$(find /Applications -maxdepth 1 -type d -name 'Xcode*.app' ! -iname '*beta*' | sort --version-sort | tail -1)
+          [ -n "$XC" ] || { echo "::error::No usable Xcode installation found."; exit 1; }
+          sudo xcode-select -s "$XC/Contents/Developer"
+          xcodebuild -version
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate Xcode project
+        run: xcodegen generate
+
+      - name: Build (Debug, unsigned)
+        run: |
+          set -o pipefail
+          xcodebuild -project ServerDock.xcodeproj -scheme ServerDock \
+            -configuration Debug -destination 'platform=macOS,arch=arm64' \
+            -derivedDataPath .xcbuild/ci CODE_SIGNING_ALLOWED=NO build

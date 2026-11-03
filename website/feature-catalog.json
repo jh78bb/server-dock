@@ -1,0 +1,257 @@
+[
+  [
+    "files",
+    "Files & editing",
+    "파일과 편집",
+    "Everyday file work, with fewer commands to remember.",
+    "파일을 다루는 일, 외워야 할 명령은 줄이고.",
+    [
+      [
+        "arrow-up-down",
+        "Transfers that keep moving",
+        "Upload and download with a concurrent queue, progress, pause, and resume. Keep track of transfers while you work.",
+        "이어가는 파일 전송",
+        "업로드·다운로드를 동시 전송 큐에서 관리하세요. 진행률을 확인하고 일시정지하거나 이어받으며 다른 작업을 계속할 수 있습니다."
+      ],
+      [
+        "logs",
+        "Follow logs as they happen",
+        "Open a text file in a live tail view. Filter the output, pause it, or let new lines scroll into view.",
+        "쌓이는 로그를 실시간으로",
+        "텍스트 로그를 실시간 추적 화면으로 여세요. 필요한 문구를 필터링하고, 잠시 멈추거나 새 줄을 자동으로 따라갈 수 있습니다."
+      ],
+      [
+        "chart-pie",
+        "Find what fills the disk",
+        "See folder sizes, percentages, and the largest items first. Drill into a folder or open a file from the results.",
+        "디스크를 차지하는 폴더 찾기",
+        "폴더별 용량과 비율을 큰 항목부터 확인하세요. 하위 폴더로 들어가 원인을 좁히고 결과에서 파일을 바로 열 수 있습니다."
+      ],
+      [
+        "file-lock",
+        "Edit protected files with sudo",
+        "When permissions block a remote file, open or save with sudo where supported. The editor keeps the file’s owner and mode when saving.",
+        "권한이 필요한 파일도 편집",
+        "권한 때문에 열거나 저장할 수 없는 원격 파일은 지원되는 환경에서 sudo로 편집하세요. 저장할 때 기존 소유자와 권한을 유지합니다."
+      ],
+      [
+        "image",
+        "Preview, extract, and share",
+        "Preview images, extract supported archives with the server’s tools, or open a downloaded copy in another Mac app.",
+        "미리 보고, 풀고, 다른 앱으로",
+        "이미지를 미리 보고 서버의 도구로 지원되는 압축 파일을 풀어보세요. 다운로드한 사본은 Mac의 다른 앱으로 열거나 공유할 수 있습니다."
+      ],
+      [
+        "star",
+        "Your frequent files, one click away",
+        "Keep favorites and recent files for each server. Return to the configuration or folder you use most without retracing the path.",
+        "자주 쓰는 파일은 한 번에",
+        "서버별 즐겨찾기와 최근 파일에서 작업을 이어가세요. 매번 경로를 찾아가지 않아도 자주 쓰는 설정 파일과 폴더로 돌아갈 수 있습니다."
+      ]
+    ]
+  ],
+  [
+    "operations",
+    "Server operations",
+    "서버 운영",
+    "See the state. Find the cause. Take the next step.",
+    "상태를 보고, 원인을 찾고, 다음 조치까지.",
+    [
+      [
+        "container",
+        "Docker and Podman, in view",
+        "Browse containers and images, inspect logs and resource use, and start or stop containers. Available when a supported engine is installed.",
+        "Docker·Podman을 화면에서",
+        "컨테이너와 이미지를 살펴보고 로그·사용량을 확인하거나 시작·중지하세요. 서버에 지원되는 엔진이 설치되어 있으면 사용할 수 있습니다."
+      ],
+      [
+        "settings-2",
+        "Manage systemd services",
+        "Search services by name and state. Start, stop, restart, reload, or change startup behavior with the server permissions you have.",
+        "systemd 서비스 관리",
+        "이름과 상태로 서비스를 찾으세요. 서버 계정의 권한 범위에서 시작·중지·재시작·설정 다시 읽기와 부팅 시 실행을 관리할 수 있습니다."
+      ],
+      [
+        "list-tree",
+        "Understand running processes",
+        "Sort processes by CPU or memory, inspect details, and send supported signals. Works with Linux, macOS, and this Mac.",
+        "실행 중인 프로세스 파악",
+        "CPU·메모리 사용량으로 정렬하고 세부 정보와 실행 명령을 확인하세요. Linux·macOS와 이 Mac에서 지원되는 프로세스 제어를 사용할 수 있습니다."
+      ],
+      [
+        "activity",
+        "Look beyond CPU and memory",
+        "On supported Linux hosts, inspect CPU temperature, I/O wait, disk throughput and IOPS, plus traffic for individual network interfaces.",
+        "CPU·메모리 너머의 지표",
+        "지원되는 Linux 서버에서 CPU 온도, I/O 대기, 디스크 전송 속도·IOPS와 네트워크 인터페이스별 트래픽까지 살펴보세요."
+      ],
+      [
+        "triangle-alert",
+        "Catch issues before the next session",
+        "Surface supported checks for disk pressure, account or password expiry, and a required reboot. Resource alerts help flag sustained load.",
+        "미리 확인하는 서버 경고",
+        "지원되는 환경에서 디스크 부족, 계정·비밀번호 만료, 재부팅 필요 여부를 확인하세요. 높은 사용량이 지속되면 리소스 알림으로 파악할 수 있습니다."
+      ],
+      [
+        "power",
+        "Wake, restart, or shut down",
+        "Save a MAC address for Wake-on-LAN. Restart or shut down a server after confirmation when your account has the required permissions.",
+        "깨우기부터 재시작까지",
+        "MAC 주소를 저장해 Wake-on-LAN으로 서버를 깨우세요. 필요한 권한이 있는 서버는 확인 후 재부팅하거나 종료할 수 있습니다."
+      ]
+    ]
+  ],
+  [
+    "automation",
+    "Commands & automation",
+    "명령과 자동화",
+    "Repeat less. Keep your own workflow.",
+    "반복은 줄이고, 익숙한 작업 방식은 그대로.",
+    [
+      [
+        "file-code",
+        "Reusable scripts, with inputs",
+        "Save commands with {{variables}}, fill in the values, then insert or run them in the terminal you choose.",
+        "변수를 넣어 재사용하는 스크립트",
+        "자주 쓰는 명령을 {{변수}}와 함께 저장하세요. 값을 입력한 뒤 선택한 터미널에 넣거나 실행할 수 있습니다."
+      ],
+      [
+        "layers",
+        "One command, several servers",
+        "Select hosts or groups, run a command, and compare results per server. Revisit run history or retry failed targets.",
+        "여러 서버에 한 번에 실행",
+        "서버나 그룹을 선택해 명령을 실행하고 서버별 결과를 비교하세요. 실행 기록을 다시 열거나 실패한 대상만 재시도할 수 있습니다."
+      ],
+      [
+        "sparkles",
+        "AI help in the server’s context",
+        "Connect your configured AI service or supported CLI. Keep conversations per host and send suggested commands to its terminal.",
+        "서버 맥락 안에서 받는 AI 도움",
+        "설정한 AI 서비스나 지원되는 CLI를 연결하세요. 서버별 대화 기록을 이어가고 제안된 명령을 해당 터미널로 보낼 수 있습니다."
+      ],
+      [
+        "panels-top-left",
+        "Return to tmux or zellij",
+        "List sessions on the server, attach to one, or create a named session. Choose automatic tmux attachment for new terminals.",
+        "tmux·zellij 세션으로 돌아가기",
+        "서버의 세션 목록을 보고 연결하거나 이름을 지정해 만드세요. 새 터미널을 열 때 tmux에 자동으로 연결하도록 설정할 수 있습니다."
+      ],
+      [
+        "git-branch",
+        "Git context beside your work",
+        "See the branch and changed-file counts in supported repositories. Reach common Git commands from the terminal toolbar.",
+        "작업 옆에서 확인하는 Git 상태",
+        "저장소의 브랜치와 변경 파일 수를 상태 표시줄에서 확인하세요. 자주 쓰는 Git 명령은 터미널 도구 모음에서 꺼내 쓸 수 있습니다."
+      ],
+      [
+        "sliders-horizontal",
+        "Build a command from options",
+        "Prepare rsync transfers or chmod/chown commands using form controls. Review the generated command before copying, inserting, or running it.",
+        "옵션을 골라 만드는 명령",
+        "입력 폼으로 rsync 전송이나 chmod·chown 명령을 준비하세요. 생성된 명령을 확인하고 복사하거나 터미널에 넣어 사용할 수 있습니다."
+      ]
+    ]
+  ],
+  [
+    "network",
+    "Network & web tools",
+    "네트워크와 웹 도구",
+    "Check connectivity from the right point of view.",
+    "필요한 위치에서 연결 상태를 확인하세요.",
+    [
+      [
+        "globe",
+        "Check HTTP from here—or there",
+        "Send GET or HEAD requests from this Mac or over SSH from a server. Inspect status, timings, redirects, and response headers.",
+        "Mac에서도, 서버에서도 HTTP 확인",
+        "이 Mac 또는 SSH로 연결된 서버에서 GET·HEAD 요청을 보내세요. 상태 코드, 응답 시간, 리디렉션과 헤더를 확인할 수 있습니다."
+      ],
+      [
+        "network",
+        "A network diagnostic toolkit",
+        "Use Ping, DNS lookup, TCP and UDP probes, Traceroute, Whois, a subnet calculator, and a port reference in dedicated tool tabs.",
+        "네트워크 진단 도구 모음",
+        "Ping, DNS 조회, TCP·UDP 확인, Traceroute, Whois, 서브넷 계산과 포트 참고표를 각 도구 탭에서 사용하세요."
+      ],
+      [
+        "plug",
+        "See what is listening",
+        "Inspect TCP and UDP listeners, addresses, processes, and whether they bind publicly or only to loopback. Search and filter the list.",
+        "어떤 포트가 열려 있는지",
+        "TCP·UDP 리스너의 주소와 프로세스를 살펴보세요. 외부 인터페이스 바인딩인지 루프백 전용인지 확인하고 검색·필터로 좁힐 수 있습니다."
+      ],
+      [
+        "shield",
+        "Manage supported firewall rules",
+        "Inspect and manage ufw or firewalld rules on supported Linux servers. Changes require the appropriate server privileges.",
+        "지원되는 방화벽 규칙 관리",
+        "Linux 서버의 ufw·firewalld 규칙을 살펴보고 관리하세요. 규칙 변경에는 서버에서 해당 작업을 할 수 있는 권한이 필요합니다."
+      ],
+      [
+        "badge-check",
+        "Inspect certificates and domains",
+        "Read TLS certificate names, issuer, expiry, and fingerprint. Discover subdomains recorded in public Certificate Transparency logs.",
+        "인증서와 도메인 확인",
+        "TLS 인증서의 이름·발급자·만료일·지문을 확인하세요. 공개 Certificate Transparency 기록에 등록된 하위 도메인도 찾아볼 수 있습니다."
+      ],
+      [
+        "external-link",
+        "Open web tools through SSH",
+        "Create a local tunnel and open a server’s web service in an app tab. Presets help you reach tools such as Grafana, Proxmox, or Portainer.",
+        "SSH 터널로 여는 웹 관리 화면",
+        "로컬 터널을 만들고 서버의 웹 서비스를 앱 탭에서 여세요. Grafana·Proxmox·Portainer 등의 프리셋으로 연결을 준비할 수 있습니다."
+      ]
+    ]
+  ],
+  [
+    "connections",
+    "Connections, organization & security",
+    "연결·정리·보안",
+    "Bring your setup with you. Keep each server in context.",
+    "기존 설정을 가져오고, 서버별 작업을 정리하세요.",
+    [
+      [
+        "hard-drive",
+        "Storage beyond SSH hosts",
+        "Browse SMB, WebDAV, S3-compatible storage, and SFTP connections. Mount supported SMB or WebDAV storage in Finder; SMB is unavailable in sandbox builds.",
+        "SSH 서버 밖의 저장소까지",
+        "SMB·WebDAV·S3 호환 저장소·SFTP에 연결하세요. 지원되는 SMB·WebDAV 저장소는 Finder에 마운트할 수 있습니다. SMB는 샌드박스 빌드에서 제외됩니다."
+      ],
+      [
+        "key-round",
+        "Manage real SSH files",
+        "Generate or import keys, edit SSH config host blocks, and review known hosts. A read-only mode helps you inspect without changing files.",
+        "실제 SSH 파일 관리",
+        "키를 생성·가져오기하고 SSH config의 Host 설정과 known_hosts를 관리하세요. 읽기 전용 모드로 파일 변경 없이 살펴볼 수도 있습니다."
+      ],
+      [
+        "lock-keyhole",
+        "Lock the workspace with Touch ID",
+        "Require Touch ID or your Mac password to unlock the app. Sessions, transfers, and tunnels can keep running behind the lock screen.",
+        "Touch ID로 작업 공간 잠금",
+        "Touch ID 또는 Mac 암호로 앱 잠금을 해제하도록 설정하세요. 잠금 화면 뒤에서도 세션·전송·터널은 계속 유지할 수 있습니다."
+      ],
+      [
+        "route",
+        "Connect through a jump host",
+        "Use ProxyJump and supported SSH-agent authentication for bastion-based connections. OS SSH mode can follow your existing SSH configuration.",
+        "점프 호스트를 거쳐 연결",
+        "ProxyJump와 지원되는 SSH 에이전트 인증으로 경유 서버를 사용하세요. OS SSH 모드에서는 기존 SSH 설정에 맞춰 연결할 수 있습니다."
+      ],
+      [
+        "import",
+        "Bring your host profiles",
+        "Import iTerm2 SSH profiles or import and export ServerDock connection profiles. Passwords and private keys are excluded from profile exports.",
+        "기존 호스트 프로필 가져오기",
+        "iTerm2의 SSH 프로필을 가져오거나 ServerDock 연결 프로필을 내보내고 가져오세요. 프로필 내보내기에는 비밀번호와 개인 키가 포함되지 않습니다."
+      ],
+      [
+        "search",
+        "Find your next action with ⌘K",
+        "Search hosts, tabs, scripts, storage, and actions in the command palette. Organize hosts with groups and colors, or redact addresses for sharing your screen.",
+        "⌘K로 다음 작업 찾기",
+        "명령 팔레트에서 호스트·탭·스크립트·저장소와 작업을 검색하세요. 그룹·색상으로 서버를 정리하고 화면 공유 시 주소를 가릴 수 있습니다."
+      ]
+    ]
+  ]
+]

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <title>ServerDock</title>
+  <desc>Lucide server icon on a blue macOS app tile.</desc>
+  <defs>
+    <linearGradient id="tile" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#2586e8"/>
+      <stop offset="1" stop-color="#174ca6"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#ffffff" stop-opacity=".35"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity=".05"/>
+    </linearGradient>
+  </defs>
+  <rect x="72" y="80" width="880" height="880" rx="202" fill="#102a51" opacity=".2"/>
+  <rect x="72" y="72" width="880" height="880" rx="202" fill="url(#tile)"/>
+  <rect x="75" y="75" width="874" height="874" rx="199" fill="none" stroke="url(#edge)" stroke-width="6"/>
+  <!-- Lucide server, ISC license; source and notices in Resources/Licenses/Lucide.txt. -->
+  <g transform="translate(224 224) scale(24)" fill="none" stroke="#f6faff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="2" width="20" height="8" rx="2"/>
+    <rect x="2" y="14" width="20" height="8" rx="2"/>
+    <path d="M6 6h.01M6 18h.01" stroke="#78f0cb" stroke-width="2.3"/>
+  </g>
+</svg>

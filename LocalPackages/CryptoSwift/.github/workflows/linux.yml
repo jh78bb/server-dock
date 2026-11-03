@@ -1,0 +1,25 @@
+name: Linux
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch: # allow manually-triggered runs
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Swift Package Build
+      run: swift build -v
+
+    - name: Run tests
+      run: swift test -c release -Xswiftc -enable-testing -Xswiftc -DCI -Xswiftc -Xfrontend -Xswiftc -solver-memory-threshold -Xswiftc -Xfrontend -Xswiftc 999999999

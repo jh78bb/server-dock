@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleAllowMixedLocalizations</key>
+	<true/>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>CFBundleDisplayName</key>
+	<string>ServerDock</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIconFile</key>
+	<string>AppIcon</string>
+	<key>CFBundleIconName</key>
+	<string>AppIcon</string>
+	<key>CFBundleIdentifier</key>
+	<string>com.kavaz.serverdock</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>ko</string>
+		<string>ja</string>
+		<string>es</string>
+		<string>pt-BR</string>
+	</array>
+	<key>CFBundleName</key>
+	<string>ServerDock</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0.2</string>
+	<key>CFBundleVersion</key>
+	<string>34</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.developer-tools</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>14.0</string>
+	<key>NSHighResolutionCapable</key>
+	<true/>
+	<key>NSHumanReadableCopyright</key>
+	<string>© 2026 cloudza. All rights reserved.</string>
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>ServerDock needs access to your local network to connect to SSH / RDP hosts on your LAN.</string>
+	<key>NSPrincipalClass</key>
+	<string>NSApplication</string>
+	<key>SUEnableAutomaticChecks</key>
+	<true/>
+	<key>SUFeedURL</key>
+	<string>https://jh78bb.github.io/server-dock/appcast.xml</string>
+	<key>SUPublicEDKey</key>
+	<string>s+AwMfJZ8Jd4e64NiWyqZQ1cX98HuKo96GAdoZbqJBE=</string>
+	<key>SUScheduledCheckInterval</key>
+	<integer>3600</integer>
+</dict>
+</plist>

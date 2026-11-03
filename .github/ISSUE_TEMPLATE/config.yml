@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: GitHub Releases
+    url: https://github.com/jh78bb/server-dock/releases
+    about: Download available releases
+  - name: Security vulnerability
+    url: https://github.com/jh78bb/server-dock/security/advisories/new
+    about: Report privately, not as a public issue

@@ -1,0 +1,44 @@
+name: Bug report
+description: Report a reproducible problem
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for the report! Please search existing issues first.
+  - type: input
+    id: serverdock-version
+    attributes:
+      label: ServerDock version
+      description: See Settings › About
+      placeholder: e.g. 0.9.3.1
+    validations:
+      required: true
+  - type: input
+    id: macos-version
+    attributes:
+      label: macOS version
+      placeholder: e.g. macOS 15.1 (Apple Silicon)
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What went wrong, and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. …
+        2. …
+        3. …
+    validations:
+      required: true
+  - type: textarea
+    id: extra
+    attributes:
+      label: Screenshots / logs (optional)
+      description: Redact any sensitive host info.

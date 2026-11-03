@@ -1,0 +1,51 @@
+.build/
+.swiftpm/
+.DS_Store
+serverdock.app/
+ServerDock.app/
+.spec-workflow/
+
+# Commit deterministic XcodeGen .xcodeproj output; ignore only personal/build state.
+xcuserdata/
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+DerivedData/
+.xcbuild/
+.xcbuild-screenshots/
+dist/
+
+# Local credentials and signing material. Commit examples with placeholder values only.
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.p12
+*.pfx
+*.mobileprovision
+*.provisionprofile
+*.keychain
+*.keychain-db
+*.pem
+*.key
+id_rsa
+id_ecdsa
+id_ed25519
+
+# FreeRDP intermediates; see scripts/build-freerdp.sh. Vendor/CFreeRDP.xcframework may be committed separately.
+.freerdp-build/
+
+# Static libssh2 build intermediates (SSH migration J1).
+.libssh2-build/
+
+# MCP tool execution logs.
+.playwright-mcp/
+
+# Local Sparkle release tools; CI downloads its own copy, so do not commit them.
+scripts/sparkle-tools/
+
+# Keep personal documentation separate from public project docs.
+/docs/private/
+
+# Generated Xcode and local-package build outputs.
+/build/
+/LocalPackages/*/build/

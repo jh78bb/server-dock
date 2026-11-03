@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!--
+      Mac App Store ReleaseMAS enables App Sandbox.
+      Remote SSH/SFTP/RDP/forwarding execute in-process through libssh2/FreeRDP/OpenSSL without system subprocesses,
+      allowing sandboxing; SERVERDOCK_MAS hides local terminals.
+
+      NSHomeDirectory redirects to the sandbox container, placing known_hosts/session_known_hosts
+      and key working files under ~/Library/Containers/com.kavaz.serverdock/Data without accessing real ~/.ssh.
+      Private keys use Keychain-backed container files; choosing an external key imports it into the library in MAS.
+    -->
+    <key>com.apple.security.app-sandbox</key>
+    <true/>
+
+    <!-- Outbound SSH/SFTP/RDP/forwarding connections and reachability probes. -->
+    <key>com.apple.security.network.client</key>
+    <true/>
+    <!-- Local listener sockets for -L/-D forwarding. -->
+    <key>com.apple.security.network.server</key>
+    <true/>
+
+    <!-- User-selected file read/write for key import and upload/download. -->
+    <key>com.apple.security.files.user-selected.read-write</key>
+    <true/>
+    <!-- Downloads folder as the default remote-file destination. -->
+    <key>com.apple.security.files.downloads.read-write</key>
+    <true/>
+</dict>
+</plist>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="112" viewBox="0 0 420 112" role="img">
+  <title>ServerDock</title>
+  <desc>Lucide server icon and ServerDock wordmark</desc>
+  <g transform="translate(12 20) scale(3)" fill="none" stroke="#20232a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="2" y="2" width="20" height="8" rx="2"/>
+    <rect x="2" y="14" width="20" height="8" rx="2"/>
+    <path d="M6 6h.01M6 18h.01" stroke="#409eff" stroke-width="2.3"/>
+  </g>
+  <text x="108" y="75" fill="#20232a" font-family="ui-sans-serif,-apple-system,sans-serif" font-size="50" font-weight="500" letter-spacing="-1">ServerDock</text>
+</svg>
